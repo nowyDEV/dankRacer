@@ -1,0 +1,5 @@
+src/serviceWorker.ts
+src/**/__tests__/**
+build
+dist
+cypress

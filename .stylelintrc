@@ -1,0 +1,17 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "declaration-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "value-list-max-empty-lines": null,
+    "declaration-colon-newline-after": null,
+    "indentation": null,
+    "value-list-comma-newline-after": null,
+    "declaration-block-no-duplicate-properties": [true, {"ignoreProperties": ["-styled-mixin0"]}]
+  },
+  "syntax": "scss"
+}
