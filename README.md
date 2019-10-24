@@ -1,44 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Big Picture
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+And customized by [Craco](https://github.com/sharegate/craco).\
+[Craco Modification Recipes](https://github.com/gsoft-inc/craco/tree/master/recipes).
+
+### How do I get set up?
+
+- Install [yarn](https://yarnpkg.com/lang/en/)
+- Install dependencies by running `yarn`
+- Add env files [Guide](https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used)
 
 ## Available Scripts
 
-In the project directory, you can run:
+- run `yarn start` for development
+- run `yarn build` builds the app for production to the `build` folder.
+- run `yarn test` to run tests
+- run `yarn eject` to remove the single build dependency (avoid it, use craco for customization instead)
 
-### `yarn start`
+### Static types
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Typescript](https://www.typescriptlang.org/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Code formatting
 
-### `yarn test`
+- [Prettier](https://github.com/prettier/prettier)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Folder structure
 
-### `yarn build`
+- `*.container.*` -> handle logic, fetch data, connect stores
+- `*.component.*` -> React view
+- `*.styles.*` -> styled components
+- `*.helpers.*` -> helper functions used exclusively by that component
+- `*.test.*` -> tests for component
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Core Libraries
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [Mobx](https://mobx.js.org/intro/concepts.html)
+- [Mobx in React](https://mobx-react.js.org/)
+- [Emotion](https://emotion.sh/docs/introduction)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Consistent Node version
 
-### `yarn eject`
+- [NVM](https://github.com/creationix/nvm)
+- run `nvm use` to set your node version
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+https://facebook.github.io/create-react-app/docs/deployment
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
