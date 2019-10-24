@@ -7,7 +7,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],
-  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'cypress'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
   settings: {
     react: {
       pragma: 'React',
@@ -19,7 +19,7 @@ module.exports = {
       }
     }
   },
-  env: { es6: true, browser: true, node: true, jest: true, 'cypress/globals': true },
+  env: { es6: true, browser: true, node: true, jest: true },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
@@ -48,6 +48,8 @@ module.exports = {
     'no-nested-ternary': 0,
     'lines-between-class-members': 'off',
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true, allowTaggedTemplates: true }],
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/label-has-for': 'off',
     'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
     'react/require-default-props': [2, { forbidDefaultForRequired: false }],
     'react/sort-comp': 0,
@@ -61,11 +63,14 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
-    '@typescript-eslint/explicit-function-return-type': 1,
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true
+      }
+    ],
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/interface-name-prefix': 0,
-    '@typescript-eslint/no-non-null-assertion': 0,
-    'import/prefer-default-export': 'off',
-    'jsx-a11y/label-has-for': 'off'
+    '@typescript-eslint/no-non-null-assertion': 0
   }
 }

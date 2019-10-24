@@ -13,13 +13,6 @@ workbox.routing.registerRoute(
   })
 ) // external assets
 
-workbox.routing.registerRoute(
-  new RegExp('https:.*.gtag.*'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'cdn-cache'
-  })
-) // GTM
-
 workbox.routing.registerRoute(new RegExp('https:.*api.*'), workbox.strategies.networkFirst()) // api JSON
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])

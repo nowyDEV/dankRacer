@@ -15,7 +15,6 @@ module.exports = {
     configure: (webpackConfig, { env, paths }) => {
       if (env === 'production') {
         try {
-          // const workboxConfig = require(path.join(paths.appPath, 'workbox.config.js'))
           webpackConfig.plugins = webpackConfig.plugins.map(plugin => {
             if (plugin.constructor.name === 'GenerateSW') {
               return new WorkboxWebpackPlugin.InjectManifest({
