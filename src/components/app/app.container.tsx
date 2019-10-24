@@ -3,7 +3,8 @@ import App from './app.component'
 import UseDataApi from '../hooks/useApiData'
 
 function AppContainer(): JSX.Element {
-  const [{ data, isLoading, isError }, doFetch] = UseDataApi('https://hn.algolia.com/api/v1/search?query=game', {
+  console.log(process.env)
+  const [{ data, isLoading, isError }, doFetch] = UseDataApi(`${process.env.REACT_APP_API_URL}?query=game`, {
     hits: []
   })
 
