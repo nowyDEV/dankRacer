@@ -11,7 +11,7 @@ function AppContainer(): JSX.Element {
     }
   )
 
-  return isLoading ? <div>LOADING...</div> : isError ? <div>Error</div> : <App data={data} />
+  return isLoading ? <div>LOADING...</div> : isError ? <div>Error</div> : <App words={data} />
 }
 
 export default AppContainer
