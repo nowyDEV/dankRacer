@@ -2,12 +2,12 @@ import React from 'react'
 import App from './app.component'
 import UseDataApi from '../hooks/useApiData'
 
+const NUM_OF_WORDS = 50
 function AppContainer(): JSX.Element {
-  console.log(process.env)
   const [{ data, isLoading, isError }, doFetch] = UseDataApi(
-    'https://raw.githubusercontent.com/Danilovesovic/youtube_typing_game/master/words.js',
+    `${process.env.REACT_APP_API_URL}/word?key=${process.env.REACT_APP_API_KEY}&number=${NUM_OF_WORDS}`,
     {
-      words: []
+      hits: []
     }
   )
 
