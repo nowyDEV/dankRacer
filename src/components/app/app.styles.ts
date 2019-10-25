@@ -52,3 +52,22 @@ export const StyledButton = styled('button')`
   cursor: pointer;
   ${SelfCenter};
 `
+
+export const HorizontalLine = styled('div')<{ top: number }>`
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  color: black;
+  top: ${({ top }) => top}px;
+`
+
+export const BottomContainer = styled('div')`
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: yellow;
+  height: 30px;
+`
