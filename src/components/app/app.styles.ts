@@ -68,6 +68,13 @@ export const BottomContainer = styled('div')`
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: yellow;
+  background-color: chocolate;
   height: 30px;
+`
+
+export const StyledInput = styled('input')`
+  height: 30px;
+  background-color: chocolate;
+  color: white;
+  font-size: ${themeUtils.font.medium};
 `

@@ -1,27 +1,46 @@
 import React from 'react'
-import {
-  Container,
-  StyledButton,
-  TextField,
-  VerticalLine,
-  Wrapper,
-  HorizontalLine,
-  BottomContainer
-} from './app.styles'
+import GameGrid from '../gameGrid/gameGrid'
+import { Container, StyledButton, TextField, VerticalLine, Wrapper, BottomContainer, StyledInput } from './app.styles'
+
+interface State {
+  showButton: boolean
+  loadGrid: boolean
+}
+
+const appReducer = (state, action): State => {
+  switch (action.type) {
+    case 'START_GAME':
+      return { ...state, showButton: false, loadGrid: true }
+    default:
+      throw new Error('Wrong action provided to the appReducer')
+  }
+}
 
 function App({ data }: { data: any }): JSX.Element {
   console.log(data)
-  const dank = new Array(19).fill(1)
+  const [state, dispatch] = React.useReducer(appReducer, {
+    showButton: true,
+    loadGrid: false
+  })
+
+  const handleClick = (): void => {
+    dispatch({ type: 'START_GAME' })
+  }
+
   return (
     <Wrapper>
       <Container>
-        {dank.map((item, index) => (
-          <HorizontalLine key={`${index * 2}-y`} top={index * 30} />
-        ))}
+        {state.loadGrid && <GameGrid lines={new Array(19).fill(1)} />}
         <TextField>dank</TextField>
-        <StyledButton type="button">Start</StyledButton>
+        {state.showButton && (
+          <StyledButton type="button" onClick={handleClick}>
+            Start
+          </StyledButton>
+        )}
         <VerticalLine />
-        <BottomContainer />
+        <BottomContainer>
+          <StyledInput type="text" />
+        </BottomContainer>
       </Container>
     </Wrapper>
   )
