@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Global, css } from '@emotion/core'
 import { ResetCss } from './reset'
+import { FontCss } from './fonts'
 import themeUtils from './themeUtils'
 
 function GlobalStyles(): ReactElement {
@@ -8,6 +9,7 @@ function GlobalStyles(): ReactElement {
     <Global
       styles={css`
         ${ResetCss};
+        ${FontCss};
 
         *,
         *::before,
@@ -25,7 +27,7 @@ function GlobalStyles(): ReactElement {
 
         body {
           font-family: ${themeUtils.fontFamily.primary};
-          font-weight: 500;
+          font-weight: 400;
           width: 100%;
           height: 100%;
           color: ${themeUtils.color.white};

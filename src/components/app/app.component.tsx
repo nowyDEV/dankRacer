@@ -1,15 +1,16 @@
 import React from 'react'
+import { Container, StyledButton, TextField, VerticalLine, Wrapper } from './app.styles'
 
 function App({ data }: { data: any }): JSX.Element {
   console.log(data)
   return (
-    <div className="App">
-      <header className="App-header">
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Container>
+        <TextField>dank</TextField>
+        <StyledButton type="button">Start</StyledButton>
+        <VerticalLine />
+      </Container>
+    </Wrapper>
   )
 }
 
