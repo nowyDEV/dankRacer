@@ -2,7 +2,7 @@ const exampleResponse = {
   dank: 'meme'
 }
 
-function getData(): Promise<ApiData> {
+function getData(): Promise<any> {
   return new Promise((res): ReturnType<typeof setTimeout> => setTimeout((): void => res(exampleResponse), 1))
 }
 

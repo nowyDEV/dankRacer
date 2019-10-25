@@ -1,3 +1,1 @@
-interface ApiData {
-  dank: string
-}
+type ApiData = string[]
