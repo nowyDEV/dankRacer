@@ -18,10 +18,19 @@ interface Word {
   word: string
 }
 
+const GAME_TIME = 5
+
 const appReducer = (state, action): State => {
   switch (action.type) {
     case 'START_GAME':
-      return { ...state, showButton: false, isPlaying: true, currentWord: action.payload }
+      return {
+        ...state,
+        showButton: false,
+        isPlaying: true,
+        currentWord: action.payload,
+        score: 0,
+        time: GAME_TIME
+      }
     case 'TYPE_LETTER':
       return { ...state, inputValue: action.payload }
     case 'SET_NEW_WORD':
@@ -48,7 +57,7 @@ function App({ words }: { words: Word[] }): JSX.Element {
     currentWord: '',
     isPlaying: false,
     inputValue: '',
-    time: 60,
+    time: GAME_TIME,
     score: 0
   })
 
@@ -108,7 +117,10 @@ function App({ words }: { words: Word[] }): JSX.Element {
         ) : state.showButton ? (
           <StyledButton onClick={handleClick}>Start</StyledButton>
         ) : (
-          <Summary score={state.score} />
+          <React.Fragment>
+            <Summary score={state.score} />
+            <StyledButton onClick={handleClick}>Start</StyledButton>
+          </React.Fragment>
         )}
       </Container>
     </Wrapper>
