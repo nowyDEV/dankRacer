@@ -29,7 +29,7 @@ const appReducer = (state, action): State => {
     case 'REDUCE_TIME':
       return { ...state, time: state.time - 1 }
     case 'MAKE_SCORE':
-      return { ...state, inputValue: '', currentWord: action.payload }
+      return { ...state, inputValue: '', currentWord: action.payload, score: state.score + 1 }
     case 'END_GAME':
       return { ...state, isPlaying: false, currentWord: '' }
     default:
