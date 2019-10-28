@@ -1,14 +1,16 @@
 import React from 'react'
-import { Container, StyledButton, Wrapper } from './app.styles'
+import { Container, Wrapper } from './app.styles'
 import WordInput from '../wordInput'
 import Timer from '../timer'
 import themeUtils from '../../styles/themeUtils'
-import Summary from '../summary'
+import SummaryScreen from '../summaryScreen'
+import StartScreen from '../startScreen'
 
 interface State {
-  showButton: boolean
+  playerName: string
   currentWord: string
   isPlaying: boolean
+  hasEnded: boolean
   inputValue: string
   time: number
   score: number
@@ -18,16 +20,17 @@ interface Word {
   word: string
 }
 
-const GAME_TIME = 5
+const GAME_TIME = 60
 
 const appReducer = (state, action): State => {
   switch (action.type) {
     case 'START_GAME':
       return {
         ...state,
-        showButton: false,
+        playerName: action.payload.playerName,
+        hasEnded: false,
         isPlaying: true,
-        currentWord: action.payload,
+        currentWord: action.payload.currentWord,
         score: 0,
         time: GAME_TIME
       }
@@ -40,7 +43,7 @@ const appReducer = (state, action): State => {
     case 'MAKE_SCORE':
       return { ...state, inputValue: '', currentWord: action.payload, score: state.score + 1 }
     case 'END_GAME':
-      return { ...state, isPlaying: false, currentWord: '' }
+      return { ...state, isPlaying: false, hasEnded: true, currentWord: '', inputValue: '' }
     default:
       throw new Error('Wrong action provided to the appReducer')
   }
@@ -53,9 +56,10 @@ function getRandomWord(words: Word[]): string {
 
 function App({ words }: { words: Word[] }): JSX.Element {
   const [state, dispatch] = React.useReducer(appReducer, {
-    showButton: true,
+    playerName: '',
     currentWord: '',
     isPlaying: false,
+    hasEnded: false,
     inputValue: '',
     time: GAME_TIME,
     score: 0
@@ -67,10 +71,6 @@ function App({ words }: { words: Word[] }): JSX.Element {
 
   const generateNewWord = (): void => {
     dispatch({ type: 'SET_NEW_WORD', payload: getRandomWord(words) })
-  }
-
-  const handleClick = (): void => {
-    dispatch({ type: 'START_GAME', payload: getRandomWord(words) })
   }
 
   const handleTyping = (value: string): void => {
@@ -90,10 +90,24 @@ function App({ words }: { words: Word[] }): JSX.Element {
     dispatch({ type: 'END_GAME' })
   }
 
+  const startGame = (playerName = ''): void =>
+    dispatch({ type: 'START_GAME', payload: { currentWord: getRandomWord(words), playerName } })
+
+  const showStart = !state.isPlaying && !state.hasEnded
+  const showSummary = !state.isPlaying && state.hasEnded
+
   return (
     <Wrapper>
       <Container>
-        {state.isPlaying ? (
+        {showStart && (
+          <StartScreen
+            onEnter={(entry): void => {
+              startGame(entry.playerName)
+            }}
+          />
+        )}
+        {showSummary && <SummaryScreen score={state.score} onRestart={startGame} />}
+        {!showStart && !showSummary && (
           <React.Fragment>
             <h1
               css={{
@@ -104,22 +118,14 @@ function App({ words }: { words: Word[] }): JSX.Element {
               {state.currentWord}
             </h1>
             <WordInput value={state.inputValue} onChange={handleTyping} />
-
             <Timer seconds={state.time} onTick={handleTick} />
             <p
               css={{
                 fontSize: themeUtils.font.large
               }}
             >
-              {`Score: ${state.score}`}
+              {`${state.playerName} Score: ${state.score}`}
             </p>
-          </React.Fragment>
-        ) : state.showButton ? (
-          <StyledButton onClick={handleClick}>Start</StyledButton>
-        ) : (
-          <React.Fragment>
-            <Summary score={state.score} />
-            <StyledButton onClick={handleClick}>Start</StyledButton>
           </React.Fragment>
         )}
       </Container>

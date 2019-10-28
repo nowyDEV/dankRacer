@@ -1,7 +1,8 @@
 import React from 'react'
 import themeUtils from '../styles/themeUtils'
+import { StyledButton } from './app/app.styles'
 
-function Summary({ score }: { score: number }): JSX.Element {
+function SummaryScreen({ score, onRestart }: { score: number; onRestart: () => void }): JSX.Element {
   return (
     <div>
       <h1
@@ -19,8 +20,9 @@ function Summary({ score }: { score: number }): JSX.Element {
       >
         {`Your score: ${score}`}
       </p>
+      <StyledButton onClick={onRestart}>Restart</StyledButton>
     </div>
   )
 }
 
-export default Summary
+export default SummaryScreen
