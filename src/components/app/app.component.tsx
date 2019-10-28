@@ -28,6 +28,8 @@ const appReducer = (state, action): State => {
       return { ...state, currentWord: action.payload }
     case 'REDUCE_TIME':
       return { ...state, time: state.time - 1 }
+    case 'MAKE_SCORE':
+      return { ...state, inputValue: '', currentWord: action.payload }
     case 'END_GAME':
       return { ...state, isPlaying: false, currentWord: '' }
     default:
@@ -50,7 +52,11 @@ function App({ words }: { words: Word[] }): JSX.Element {
     score: 0
   })
 
-  const updateCurrentWord = (): void => {
+  const matchWords = (value: string): boolean => {
+    return state.currentWord.toLowerCase() === value
+  }
+
+  const generateNewWord = (): void => {
     dispatch({ type: 'SET_NEW_WORD', payload: getRandomWord(words) })
   }
 
@@ -60,7 +66,10 @@ function App({ words }: { words: Word[] }): JSX.Element {
 
   const handleTyping = (value: string): void => {
     dispatch({ type: 'TYPE_LETTER', payload: value })
-    updateCurrentWord()
+    if (matchWords(value)) {
+      dispatch({ type: 'MAKE_SCORE' })
+      generateNewWord()
+    }
   }
 
   const handleTick = (): void => {
