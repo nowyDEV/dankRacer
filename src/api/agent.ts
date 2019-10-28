@@ -1,9 +1,7 @@
-const exampleResponse = {
-  dank: 'meme'
-}
+import ExampleData from './data.json'
 
 function getData(): Promise<any> {
-  return new Promise((res): ReturnType<typeof setTimeout> => setTimeout((): void => res(exampleResponse), 1))
+  return new Promise((res): ReturnType<typeof setTimeout> => setTimeout((): void => res(ExampleData), 1))
 }
 
 const requests = {

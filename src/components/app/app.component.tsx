@@ -1,26 +1,18 @@
 import React from 'react'
-import GameGrid from '../gameGrid/gameGrid'
-import { Container, StyledButton, TextField, VerticalLine, Wrapper, BottomContainer, StyledInput } from './app.styles'
+import { Container, StyledButton, Wrapper, StyledInput } from './app.styles'
 
 interface State {
   showButton: boolean
-  loadGrid: boolean
-  level: number
+  wordIndex: number
 }
-
-const NUM_OF_LINES = 19
 
 const appReducer = (state, action): State => {
   switch (action.type) {
     case 'START_GAME':
-      return { ...state, showButton: false, loadGrid: true }
+      return { ...state, showButton: false, wordIndex: 0 }
     default:
       throw new Error('Wrong action provided to the appReducer')
   }
-}
-
-function insertSpans(): void {
-  console.log('add span')
 }
 
 function getRandomWord(words: string[]): { index: number; word: string } {
@@ -29,11 +21,9 @@ function getRandomWord(words: string[]): { index: number; word: string } {
 }
 
 function App({ words }: { words: any }): JSX.Element {
-  console.log(words)
   const [state, dispatch] = React.useReducer(appReducer, {
     showButton: true,
-    loadGrid: false,
-    level: 6
+    wordIndex: 0
   })
 
   const handleClick = (): void => {
@@ -43,17 +33,11 @@ function App({ words }: { words: any }): JSX.Element {
   return (
     <Wrapper>
       <Container>
-        {state.loadGrid && <GameGrid lines={new Array(NUM_OF_LINES).fill(1)} />}
-        <TextField>dank</TextField>
-        {state.showButton && (
-          <StyledButton type="button" onClick={handleClick}>
-            Start
-          </StyledButton>
-        )}
-        <VerticalLine />
-        <BottomContainer>
-          <StyledInput type="text" />
-        </BottomContainer>
+        <h1>{words[state.wordIndex].word}</h1>
+        <StyledInput placeholder="Type here" />
+        <p>Time left: </p>
+        <p>Score: </p>
+        <StyledButton onClick={handleClick}>Start</StyledButton>
       </Container>
     </Wrapper>
   )

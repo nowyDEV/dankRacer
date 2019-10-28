@@ -1,11 +1,13 @@
-import React, { Dispatch } from 'react'
-import axios from 'axios'
+import React from 'react'
+import agent from '../../api/agent'
 
 interface State {
   isLoading: boolean
   isError: boolean
   data: any
 }
+
+const NUM_OF_WORDS = 50
 
 const dataFetchReducer = (state, action): State => {
   switch (action.type) {
@@ -20,29 +22,27 @@ const dataFetchReducer = (state, action): State => {
   }
 }
 
-function UseDataApi(initialUrl, initialData): [State, Dispatch<React.SetStateAction<string>>] {
-  const [url, setUrl] = React.useState<string>(initialUrl)
-
+function UseDataApi(): [State] {
   const [state, dispatch] = React.useReducer(dataFetchReducer, {
-    isLoading: false,
+    isLoading: true,
     isError: false,
-    data: initialData
+    data: []
   })
 
   React.useEffect(() => {
     const fetchData = async (): Promise<void> => {
       dispatch({ type: 'FETCH_INIT' })
       try {
-        const result = await axios(url)
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data })
+        const result = await agent.requests.getData()
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.slice(0, NUM_OF_WORDS) })
       } catch (error) {
         dispatch({ type: 'FETCH_FAILURE' })
       }
     }
     fetchData()
-  }, [url])
+  }, [])
 
-  return [state, setUrl]
+  return [state]
 }
 
 export default UseDataApi
