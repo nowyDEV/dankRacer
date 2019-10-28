@@ -27,6 +27,8 @@ const appReducer = (state, action): State => {
       return { ...state, currentWord: action.payload }
     case 'REDUCE_TIME':
       return { ...state, time: state.time - 1 }
+    case 'END_GAME':
+      return { ...state, isPlaying: false, currentWord: '' }
     default:
       throw new Error('Wrong action provided to the appReducer')
   }
@@ -60,6 +62,13 @@ function App({ words }: { words: Word[] }): JSX.Element {
     updateCurrentWord()
   }
 
+  const handleTick = (): void => {
+    dispatch({ type: 'REDUCE_TIME' })
+    if (state.time === 0) {
+      dispatch({ type: 'END_GAME' })
+    }
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -75,7 +84,7 @@ function App({ words }: { words: Word[] }): JSX.Element {
             </h1>
             <WordInput value={state.inputValue} onChange={handleTyping} />
 
-            <Timer seconds={state.time} onTick={(): void => dispatch({ type: 'REDUCE_TIME' })} />
+            <Timer seconds={state.time} onTick={handleTick} />
             <p
               css={{
                 fontSize: themeUtils.font.large
