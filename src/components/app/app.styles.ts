@@ -17,6 +17,7 @@ export const Container = styled('div')`
   position: relative;
   ${FlexCenter};
   flex-flow: column wrap;
+  justify-content: space-around;
 `
 
 export const StyledButton = styled('button')`
@@ -32,7 +33,7 @@ export const StyledButton = styled('button')`
 
 export const StyledInput = styled('input')`
   height: 30px;
-  background-color: chocolate;
-  color: white;
+  background-color: white;
+  color: black;
   font-size: ${themeUtils.font.medium};
 `

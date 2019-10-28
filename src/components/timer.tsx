@@ -1,7 +1,12 @@
 import React from 'react'
 import themeUtils from '../styles/themeUtils'
+import useInterval from './hooks/useInterval'
 
-function Timer({ seconds }: { seconds: number }): JSX.Element {
+function Timer({ seconds, onTick }: { seconds: number; onTick: () => void }): JSX.Element {
+  useInterval((): void => {
+    onTick()
+  }, 1000)
+
   return (
     <div
       css={{
