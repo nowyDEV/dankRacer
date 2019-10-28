@@ -3,6 +3,7 @@ import { Container, StyledButton, Wrapper } from './app.styles'
 import WordInput from '../wordInput'
 import Timer from '../timer'
 import themeUtils from '../../styles/themeUtils'
+import Summary from '../summary'
 
 interface State {
   showButton: boolean
@@ -63,10 +64,12 @@ function App({ words }: { words: Word[] }): JSX.Element {
   }
 
   const handleTick = (): void => {
-    dispatch({ type: 'REDUCE_TIME' })
-    if (state.time === 0) {
-      dispatch({ type: 'END_GAME' })
+    if (state.time > 0) {
+      dispatch({ type: 'REDUCE_TIME' })
+      return
     }
+
+    dispatch({ type: 'END_GAME' })
   }
 
   return (
@@ -93,8 +96,10 @@ function App({ words }: { words: Word[] }): JSX.Element {
               {`Score: ${state.score}`}
             </p>
           </React.Fragment>
-        ) : (
+        ) : state.showButton ? (
           <StyledButton onClick={handleClick}>Start</StyledButton>
+        ) : (
+          <Summary score={state.score} />
         )}
       </Container>
     </Wrapper>
