@@ -1,4 +1,4 @@
-# Big Picture
+# Dank Racer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 And customized by [Craco](https://github.com/sharegate/craco).\

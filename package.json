@@ -1,5 +1,6 @@
 {
   "name": "typing_game",
+  "homepage": "https://nowytr.github.io/typing_game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@types/react": "16.9.9",
     "@types/react-dom": "16.9.2",
     "axios": "^0.19.0",
+    "gh-pages": "^2.1.1",
     "mobx": "^5.11.0",
     "mobx-react": "^6.1.1",
     "phaser": "^3.20.1",
@@ -29,7 +31,9 @@
     "lint:css": "stylelint \"**/*.+(ts|js|css|scss|)\"",
     "format": "yarn prettier -- --write",
     "prettier": "prettier \"**/*.+(ts|tsx|js|jsx|json|css|scss|md|mdx)\"",
-    "validate": "yarn lint && yarn prettier -- --list-different"
+    "validate": "yarn lint && yarn prettier -- --list-different",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "husky": {
     "hooks": {
