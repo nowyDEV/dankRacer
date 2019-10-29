@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './components/app'
+import { Game } from './components/game'
 import * as serviceWorker from './serviceWorker'
 import GlobalStyles from './styles/global'
 
 ReactDOM.render(
   <React.Fragment>
     <GlobalStyles />
-    <App />
+    <Game />
   </React.Fragment>,
   document.getElementById('root')
 )

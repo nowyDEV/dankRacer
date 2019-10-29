@@ -50,6 +50,13 @@ module.exports = {
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true, allowTaggedTemplates: true }],
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-for': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        controlComponents: ['Input'],
+        depth: 3
+      }
+    ],
     'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
     'react/require-default-props': [2, { forbidDefaultForRequired: false }],
     'react/sort-comp': 0,

@@ -7,8 +7,6 @@ interface State {
   data: any
 }
 
-const NUM_OF_WORDS = 50
-
 const dataFetchReducer = (state, action): State => {
   switch (action.type) {
     case 'FETCH_INIT':
@@ -34,7 +32,7 @@ function UseDataApi(): [State] {
       dispatch({ type: 'FETCH_INIT' })
       try {
         const result = await agent.requests.getData()
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.slice(0, NUM_OF_WORDS) })
+        dispatch({ type: 'FETCH_SUCCESS', payload: result })
       } catch (error) {
         dispatch({ type: 'FETCH_FAILURE' })
       }

@@ -37,3 +37,7 @@ export const StyledInput = styled('input')`
   color: black;
   font-size: ${themeUtils.font.medium};
 `
+
+export const Status = styled('div')`
+  font-size: ${themeUtils.font.medium};
+`

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledInput, StyledButton } from './app/app.styles'
+import { StyledInput, StyledButton } from './game/game.styles'
 
 function NameForm({ onSubmit }: { onSubmit: (name: string) => void }): JSX.Element {
   const [name, setName] = React.useState('')

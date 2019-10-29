@@ -13,7 +13,7 @@ const themeUtils = {
     large: '3rem'
   },
   fontFamily: {
-    primary: '"Starcraft", sans-serif',
+    primary: '"HelveticaNeue", "Helvetica", "Arial", sans-serif',
     secondary: '"HelveticaNeue", "Helvetica", "Arial", sans-serif'
   },
   // in ems

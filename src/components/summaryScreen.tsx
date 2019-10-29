@@ -1,6 +1,6 @@
 import React from 'react'
 import themeUtils from '../styles/themeUtils'
-import { StyledButton } from './app/app.styles'
+import { StyledButton } from './game/game.styles'
 
 function SummaryScreen({ score, onRestart }: { score: number; onRestart: () => void }): JSX.Element {
   return (

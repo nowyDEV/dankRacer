@@ -1,8 +1,8 @@
 // import ExampleData from './words.json'
-import ExampleSentence from './sentence.json'
+import ExampleData from './data.json'
 
 function getData(): Promise<any> {
-  return new Promise((res): ReturnType<typeof setTimeout> => setTimeout((): void => res(ExampleSentence), 1))
+  return new Promise((res): ReturnType<typeof setTimeout> => setTimeout((): void => res(ExampleData), 1))
 }
 
 const requests = {
