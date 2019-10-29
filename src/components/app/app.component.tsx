@@ -55,6 +55,7 @@ function getRandomWord(words: Word[]): string {
 }
 
 function App({ words }: { words: Word[] }): JSX.Element {
+  console.log(words)
   const [state, dispatch] = React.useReducer(appReducer, {
     playerName: '',
     currentWord: '',
