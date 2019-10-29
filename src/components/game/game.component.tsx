@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Wrapper, Status } from './game.styles'
 import { TypingPanel } from '../typingPanel'
+import { CameraView } from '../cameraView'
 
 interface State {
   startTime: number | null
@@ -56,6 +57,7 @@ function Game({ text }: { text: string }): JSX.Element {
         <Status>
           {`${(state.progress * 100).toFixed(0)}% completed ${state.wpm ? `, ${state.wpm.toFixed(0)} WPM` : ''}`}
         </Status>
+        <CameraView />
       </Container>
     </Wrapper>
   )

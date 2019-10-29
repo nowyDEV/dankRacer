@@ -1,23 +1,25 @@
 import styled from '@emotion/styled'
 import { FlexCenter } from '../../styles'
 import themeUtils from '../../styles/themeUtils'
+import BackgroundImage from '../../assets/images/carmageddon-max-damage.jpg'
 
 export const Wrapper = styled('div')`
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background: url('${BackgroundImage}') no-repeat;
+  background-size: cover;
   ${FlexCenter};
 `
 
 export const Container = styled('div')`
   width: 960px;
   height: 600px;
-  background-color: #1c2323;
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   position: relative;
   ${FlexCenter};
   flex-flow: column wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 export const StyledButton = styled('button')`
