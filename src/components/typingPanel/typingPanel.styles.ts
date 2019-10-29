@@ -1,7 +1,16 @@
 import styled from '@emotion/styled'
+import themeUtils from '../../styles/themeUtils'
+
+export const Container = styled('div')`
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px 15px;
+`
 
 export const GameText = styled('div')<{ ok: boolean }>`
-  line-height: 1.5;
+  line-height: 1;
+  font-size: ${themeUtils.font.base};
 
   & .past {
     color: #888;
@@ -23,7 +32,7 @@ export const InputArea = styled('div')`
 
   & label {
     color: #888;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 `
 
@@ -34,4 +43,6 @@ export const Input = styled('input')<{ ok: boolean }>`
   font-size: 1.5em;
   background: ${props => (props.ok ? 'white' : '#faa')};
   color: ${props => (props.ok ? '#333' : '#f00')};
+  border: 1px solid #000;
+  padding: 5px;
 `

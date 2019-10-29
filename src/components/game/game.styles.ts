@@ -13,13 +13,14 @@ export const Wrapper = styled('div')`
 
 export const Container = styled('div')`
   width: 960px;
-  height: 600px;
+  height: 650px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   position: relative;
   ${FlexCenter};
   flex-flow: column wrap;
   justify-content: space-between;
+  padding: 30px;
 `
 
 export const StyledButton = styled('button')`

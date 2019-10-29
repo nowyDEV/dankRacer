@@ -1,5 +1,5 @@
 import React from 'react'
-import { GameText, Input, InputArea } from './typingPanel.styles'
+import { Container, GameText, Input, InputArea } from './typingPanel.styles'
 
 interface Props {
   text: string
@@ -44,7 +44,7 @@ function TypingPanel({ text, onType, onProgress }: Props): JSX.Element {
   const future = text.substr(state.charactersCommitted + present.length)
   const done = state.charactersCommitted === text.length
   return (
-    <div>
+    <Container>
       <GameText ok={ok}>
         <span className="past">{past}</span>
         <span className="present">{present}</span>
@@ -54,7 +54,7 @@ function TypingPanel({ text, onType, onProgress }: Props): JSX.Element {
         <label htmlFor="text">Type the text:</label>
         <Input ok={ok} id="text" autoFocus onChange={onChange} value={state.inputText} disabled={done} />
       </InputArea>
-    </div>
+    </Container>
   )
 }
 
