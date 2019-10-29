@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/typing_game/static/js/main.94ae3f7c.chunk.js",
-    "main.js.map": "/typing_game/static/js/main.94ae3f7c.chunk.js.map",
-    "runtime-main.js": "/typing_game/static/js/runtime-main.d6554409.js",
-    "runtime-main.js.map": "/typing_game/static/js/runtime-main.d6554409.js.map",
-    "static/js/2.0acc3002.chunk.js": "/typing_game/static/js/2.0acc3002.chunk.js",
-    "static/js/2.0acc3002.chunk.js.map": "/typing_game/static/js/2.0acc3002.chunk.js.map",
-    "index.html": "/typing_game/index.html",
-    "precache-manifest.60e29bf3c004489786c8407a7aab93a4.js": "/typing_game/precache-manifest.60e29bf3c004489786c8407a7aab93a4.js",
-    "service-worker.js": "/typing_game/service-worker.js",
-    "static/media/carmageddon-max-damage.jpg": "/typing_game/static/media/carmageddon-max-damage.5d75e7d1.jpg",
-    "static/media/starcraftnormal.woff": "/typing_game/static/media/starcraftnormal.a66e56cf.woff",
-    "static/media/starcraftnormal.woff2": "/typing_game/static/media/starcraftnormal.c8bd7c63.woff2"
+    "main.js": "/dankRacer/static/js/main.4821f16d.chunk.js",
+    "main.js.map": "/dankRacer/static/js/main.4821f16d.chunk.js.map",
+    "runtime-main.js": "/dankRacer/static/js/runtime-main.d5fd927e.js",
+    "runtime-main.js.map": "/dankRacer/static/js/runtime-main.d5fd927e.js.map",
+    "static/js/2.d743d7b5.chunk.js": "/dankRacer/static/js/2.d743d7b5.chunk.js",
+    "static/js/2.d743d7b5.chunk.js.map": "/dankRacer/static/js/2.d743d7b5.chunk.js.map",
+    "index.html": "/dankRacer/index.html",
+    "precache-manifest.c676b2a7a50da9cd5aa5b9ce43879bee.js": "/dankRacer/precache-manifest.c676b2a7a50da9cd5aa5b9ce43879bee.js",
+    "service-worker.js": "/dankRacer/service-worker.js",
+    "static/media/carmageddon-max-damage.jpg": "/dankRacer/static/media/carmageddon-max-damage.5d75e7d1.jpg",
+    "static/media/starcraftnormal.woff": "/dankRacer/static/media/starcraftnormal.a66e56cf.woff",
+    "static/media/starcraftnormal.woff2": "/dankRacer/static/media/starcraftnormal.c8bd7c63.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.d6554409.js",
-    "static/js/2.0acc3002.chunk.js",
-    "static/js/main.94ae3f7c.chunk.js"
+    "static/js/runtime-main.d5fd927e.js",
+    "static/js/2.d743d7b5.chunk.js",
+    "static/js/main.4821f16d.chunk.js"
   ]
 }

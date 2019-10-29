@@ -1,4 +1,4 @@
-importScripts("/typing_game/precache-manifest.60e29bf3c004489786c8407a7aab93a4.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/dankRacer/precache-manifest.c676b2a7a50da9cd5aa5b9ce43879bee.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /* eslint-disable */
 workbox.setConfig({
