@@ -1,0 +1,37 @@
+[
+  {
+    "success": true,
+    "game": {
+      "isSinglePlayer": true,
+      "numPlayers": 1,
+      "maxPlayers": 1,
+      "isJoinable": false,
+      "isComplete": false,
+      "isViewable": false,
+      "starting": true,
+      "started": false,
+      "players": ["5db9888724c4150014e10ab3"],
+      "playerNames": ["player3542"],
+      "startingPlayers": [],
+      "wasReset": false,
+      "_id": "5db9888c24c4150014e10ab4",
+      "lang": "javascript",
+      "langName": "JavaScript",
+      "exercise": "5286d19434a63f1c7600001b",
+      "creator": "5db9888724c4150014e10ab3",
+      "status": "waiting",
+      "statusText": "Waiting",
+      "startTime": "2019-10-30T12:56:49.433Z",
+      "__v": 0
+    },
+    "timeLeft": -4985,
+    "exercise": {
+      "_id": "5286d19434a63f1c7600001b",
+      "typeables": 497,
+      "typeableCode": "[\n'_readableState',\n'_writableState',\n'_transformState'\n].forEach(function(prop, i, props) {\nObject.defineProperty(LazyTransform.prototype, prop, {\nget: function() {\nstream.Transform.call(this, this._options);\nthis._writableState.decodeStrings = false;\nthis._writableState.defaultEncoding = 'binary';\nreturn this[prop];\n},\nset: function(val) {\nObject.defineProperty(this, prop, {\nvalue: val,\nenumerable: true,\nconfigurable: true,\nwritable: true\n});\n},\nconfigurable: true,\nenumerable: true\n});\n});\n",
+      "code": "[\n  '_readableState',\n  '_writableState',\n  '_transformState'\n].forEach(function(prop, i, props) {\n  Object.defineProperty(LazyTransform.prototype, prop, {\n    get: function() {\n      stream.Transform.call(this, this._options);\n      this._writableState.decodeStrings = false;\n      this._writableState.defaultEncoding = 'binary';\n      return this[prop];\n    },\n    set: function(val) {\n      Object.defineProperty(this, prop, {\n        value: val,\n        enumerable: true,\n        configurable: true,\n        writable: true\n      });\n    },\n    configurable: true,\n    enumerable: true\n  });\n});\n",
+      "projectName": "Node.js"
+    },
+    "nonTypeables": ".comment,.template_comment,.diff,.javadoc,.phpdoc"
+  }
+]
