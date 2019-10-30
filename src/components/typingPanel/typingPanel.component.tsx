@@ -38,21 +38,21 @@ function TypingPanel({ text, onType, onProgress }: Props): JSX.Element {
     }
   }
 
-  const ok = text.substr(state.charactersCommitted).startsWith(state.inputText)
+  const isCorrect = text.substr(state.charactersCommitted).startsWith(state.inputText)
   const past = text.substr(0, state.charactersCommitted)
   const present = (text.substr(state.charactersCommitted).match(/^\S+/) || [''])[0]
   const future = text.substr(state.charactersCommitted + present.length)
   const done = state.charactersCommitted === text.length
   return (
     <Container>
-      <GameText ok={ok}>
+      <GameText green={isCorrect}>
         <span className="past">{past}</span>
         <span className="present">{present}</span>
         <span className="future">{future}</span>
       </GameText>
       <InputArea>
         <label htmlFor="text">Type the text:</label>
-        <Input ok={ok} id="text" autoFocus onChange={onChange} value={state.inputText} disabled={done} />
+        <Input error={!isCorrect} id="text" autoFocus onChange={onChange} value={state.inputText} disabled={done} />
       </InputArea>
     </Container>
   )

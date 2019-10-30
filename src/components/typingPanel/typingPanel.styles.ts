@@ -8,7 +8,7 @@ export const Container = styled('div')`
   padding: 30px 15px;
 `
 
-export const GameText = styled('div')<{ ok: boolean }>`
+export const GameText = styled('div')<{ green: boolean }>`
   line-height: 1;
   font-size: ${themeUtils.font.base};
 
@@ -17,8 +17,8 @@ export const GameText = styled('div')<{ ok: boolean }>`
   }
 
   & .present {
-    color: ${props => (props.ok ? '#4a3' : '#f00')};
-    background: ${props => (props.ok ? 'transparent' : '#fcc')};
+    color: ${props => (props.green ? '#4a3' : '#f00')};
+    background: ${props => (props.green ? 'transparent' : '#fcc')};
     text-decoration: underline;
   }
 
@@ -36,13 +36,13 @@ export const InputArea = styled('div')`
   }
 `
 
-export const Input = styled('input')<{ ok: boolean }>`
+export const Input = styled('input')<{ error: boolean }>`
   width: 100%;
   box-sizing: border-box;
   font: inherit;
   font-size: 1.5em;
-  background: ${props => (props.ok ? 'white' : '#faa')};
-  color: ${props => (props.ok ? '#333' : '#f00')};
+  background: ${props => (props.error ? '#faa' : 'white')};
+  color: ${props => (props.error ? '#f00' : '#333')};
   border: 1px solid #000;
   padding: 5px;
 `
