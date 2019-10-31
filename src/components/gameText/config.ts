@@ -65,3 +65,5 @@ export const specialKeys = [
 ]
 
 export const actionKeys = ['enter', 'space', 'shift+space', 'shift+enter']
+
+export const NON_TYPEABLES = ['comment', 'template_comment', 'diff', 'javadoc', 'phpdoc']

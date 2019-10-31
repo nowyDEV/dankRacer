@@ -6,3 +6,7 @@ export function getKeyEvents(): string[] {
 
   return [...allAlphaKeys, ...numericKeys, ...specialKeys, ...actionKeys]
 }
+
+export function hasClass(el: HTMLElement, classes: string[]): boolean {
+  return classes.some(className => el.classList.contains(className))
+}
