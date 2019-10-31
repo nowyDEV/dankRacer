@@ -10,3 +10,7 @@ export function getKeyEvents(): string[] {
 export function hasClass(el: HTMLElement, classes: string[]): boolean {
   return classes.some(className => el.classList.contains(className))
 }
+
+export function isTextNode(el: HTMLElement): boolean {
+  return el.nodeType === 3
+}

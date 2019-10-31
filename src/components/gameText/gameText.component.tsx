@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper, Container } from './gameText.styles'
 import { NON_TYPEABLES } from './config'
-import { hasClass } from './gameText.helpers'
+import { hasClass, isTextNode } from './gameText.helpers'
 
 interface Code {
   char: string
@@ -114,7 +114,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
           this.trailingSearch = mode === 'trailing'
         }
       },
-      function check(this, piece, i, addSection) {
+      function check(piece, i, addSection) {
         if (piece.char === ' ' || piece.char === '\t') {
           // Skip over
           return
@@ -154,7 +154,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
           }
         }
       },
-      function check(this, piece, i, addSection) {
+      function check(piece, i, addSection) {
         if (piece.char === ' ' || piece.char === '\t') {
           // Skip over
           return
@@ -174,13 +174,64 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
         }
       }
     )
+
+    // Group remaining code chars by original element, and loop through
+    // every element group and replace the element's text content with the
+    // wrapped code chars
+    const groupedCodemap = codemap.map(piece => piece.elIndex)
+
+    groupedCodemap.forEach(codeGroup => {
+      const elem = codeGroup[0].el
+      const elemText = elem.textContent || ''
+
+      const collapseCodeGroup = (code, text): string => {
+        const chunks: string[] = []
+        let idx = 0
+
+        code.forEach(piece => {
+          chunks.push(text.slice(idx, piece.idx))
+          idx = piece.idx + 1
+
+          if (piece.char === '\n') {
+            chunks.push(`<span class="code-char return-char"></span>`)
+            if (!piece.beforeComment) {
+              chunks.push('\n')
+            }
+          } else {
+            chunks.push(`<span class="code-char">${piece.char}</span>`)
+          }
+        })
+
+        chunks.push(text.slice(idx, text.length))
+        return chunks.join('')
+      }
+
+      if (isTextNode(elem)) {
+        elem.replaceWith(collapseCodeGroup(codeGroup, elemText))
+      } else {
+        // Re-add highlighting classes to the new spans
+        const oldClass = elem.attr('class')
+        const newContent = gameCode.current!.querySelector(collapseCodeGroup(codeGroup, elemText))
+        elem.outerHTML = newContent
+        newContent instanceof HTMLElement && newContent.classList.add(oldClass)
+      }
+    })
+
+    // Set all code characters to untyped
+    gameCode.current.querySelectorAll('.code-char').forEach(el => {
+      el.classList.add('untyped')
+    })
   }
+
+  React.useEffect(() => {
+    bindCodeCharacters()
+  }, [])
   console.log(exercise)
   return (
     <Wrapper>
       <Container>
         <span ref={gameCode} id="gamecode">
-          dank meme
+          {exercise.code}
         </span>
       </Container>
     </Wrapper>
