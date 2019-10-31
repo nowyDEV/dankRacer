@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/dankRacer/static/js/main.4821f16d.chunk.js",
-    "main.js.map": "/dankRacer/static/js/main.4821f16d.chunk.js.map",
+    "main.js": "/dankRacer/static/js/main.72336188.chunk.js",
+    "main.js.map": "/dankRacer/static/js/main.72336188.chunk.js.map",
     "runtime-main.js": "/dankRacer/static/js/runtime-main.d5fd927e.js",
     "runtime-main.js.map": "/dankRacer/static/js/runtime-main.d5fd927e.js.map",
-    "static/js/2.d743d7b5.chunk.js": "/dankRacer/static/js/2.d743d7b5.chunk.js",
-    "static/js/2.d743d7b5.chunk.js.map": "/dankRacer/static/js/2.d743d7b5.chunk.js.map",
+    "static/js/2.2e584e27.chunk.js": "/dankRacer/static/js/2.2e584e27.chunk.js",
+    "static/js/2.2e584e27.chunk.js.map": "/dankRacer/static/js/2.2e584e27.chunk.js.map",
     "index.html": "/dankRacer/index.html",
-    "precache-manifest.c676b2a7a50da9cd5aa5b9ce43879bee.js": "/dankRacer/precache-manifest.c676b2a7a50da9cd5aa5b9ce43879bee.js",
+    "precache-manifest.bbdae5e35ceac1e8dbf4b7b1f9d675a3.js": "/dankRacer/precache-manifest.bbdae5e35ceac1e8dbf4b7b1f9d675a3.js",
     "service-worker.js": "/dankRacer/service-worker.js",
     "static/media/carmageddon-max-damage.jpg": "/dankRacer/static/media/carmageddon-max-damage.5d75e7d1.jpg",
     "static/media/starcraftnormal.woff": "/dankRacer/static/media/starcraftnormal.a66e56cf.woff",
@@ -15,7 +15,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d5fd927e.js",
-    "static/js/2.d743d7b5.chunk.js",
-    "static/js/main.4821f16d.chunk.js"
+    "static/js/2.2e584e27.chunk.js",
+    "static/js/main.72336188.chunk.js"
   ]
 }
