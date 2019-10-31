@@ -18,6 +18,7 @@ function isNonTypable(el: HTMLElement): boolean {
 
 function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
   const gameCode = React.useRef<HTMLSpanElement | null>(null)
+  const [htmlData, setHtmlData] = React.useState(exercise.code)
 
   /**
    * Extract game code, manipulate references, remove non-typeables,
@@ -211,12 +212,11 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       }
 
       if (isTextNode(elem)) {
-        elem.outerHTML = collapseCodeGroup(codeGroup, elemText)
+        setHtmlData(collapseCodeGroup(codeGroup, elemText))
       } else {
         // Re-add highlighting classes to the new spans
         const oldClass = elem.attr('class')
         const newContent = gameCode.current!.querySelector(collapseCodeGroup(codeGroup, elemText))
-        console.log(newContent)
         elem.outerHTML = newContent
         newContent instanceof HTMLElement && newContent.classList.add(oldClass)
       }
@@ -234,9 +234,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
   return (
     <Wrapper>
       <Container>
-        <span ref={gameCode} id="gamecode">
-          {exercise.code}
-        </span>
+        <span ref={gameCode} id="gamecode" dangerouslySetInnerHTML={{ __html: htmlData }} />
       </Container>
     </Wrapper>
   )
