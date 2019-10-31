@@ -60,6 +60,7 @@ module.exports = {
     'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
     'react/require-default-props': [2, { forbidDefaultForRequired: false }],
     'react/sort-comp': 0,
+    'react/no-this-in-sfc': 0,
     'react/jsx-props-no-spreading': 0,
     'react/state-in-constructor': [2, 'never'],
     'react/destructuring-assignment': 0,
