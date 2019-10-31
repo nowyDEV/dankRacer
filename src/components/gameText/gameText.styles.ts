@@ -5,7 +5,6 @@ export const Wrapper = styled('pre')`
   display: block;
   padding: 10px;
   margin: 0 0 10px;
-  font-size: ${themeUtils.font.base};
   line-height: 1.4286;
   color: #7b8a8b;
   word-break: break-all;
@@ -17,6 +16,7 @@ export const Wrapper = styled('pre')`
 
 export const Container = styled('code')`
   font-family: 'Source Code Pro', monospace;
+  font-size: ${themeUtils.font.small};
   display: block;
   padding: 0.5em;
   color: #333;

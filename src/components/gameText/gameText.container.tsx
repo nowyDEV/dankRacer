@@ -11,7 +11,7 @@ function GameTextContainer(): JSX.Element {
       setIsLoading(true)
       try {
         const games = await agent.requests.getGameData()
-        setData(games[0])
+        setData(games[1])
       } catch (err) {
         console.log(err.message)
       } finally {

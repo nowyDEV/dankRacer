@@ -211,11 +211,12 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       }
 
       if (isTextNode(elem)) {
-        elem.replaceWith(collapseCodeGroup(codeGroup, elemText))
+        elem.outerHTML = collapseCodeGroup(codeGroup, elemText)
       } else {
         // Re-add highlighting classes to the new spans
         const oldClass = elem.attr('class')
         const newContent = gameCode.current!.querySelector(collapseCodeGroup(codeGroup, elemText))
+        console.log(newContent)
         elem.outerHTML = newContent
         newContent instanceof HTMLElement && newContent.classList.add(oldClass)
       }
