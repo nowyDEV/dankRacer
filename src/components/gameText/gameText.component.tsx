@@ -193,8 +193,8 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
         let idx = 0
 
         code.forEach(piece => {
-          chunks.push(text.slice(idx, piece.idx))
-          idx = piece.idx + 1
+          chunks.push(text.slice(idx, piece.index))
+          idx = piece.index + 1
 
           if (piece.char === '\n') {
             chunks.push(`<span class="code-char return-char"></span>`)
