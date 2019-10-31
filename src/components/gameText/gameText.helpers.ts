@@ -8,7 +8,10 @@ export function getKeyEvents(): string[] {
 }
 
 export function hasClass(el: HTMLElement, classes: string[]): boolean {
-  return classes.some(className => el.classList.contains(className))
+  if (el instanceof HTMLElement) {
+    return classes.some(className => el.classList.contains(className))
+  }
+  return false
 }
 
 export function isTextNode(el: HTMLElement): boolean {

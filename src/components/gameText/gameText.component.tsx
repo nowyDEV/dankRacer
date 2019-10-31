@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import { Wrapper, Container } from './gameText.styles'
 import { NON_TYPEABLES } from './config'
 import { hasClass, isTextNode } from './gameText.helpers'
@@ -20,7 +21,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
 
   /**
    * Extract game code, manipulate references, remove non-typeables,
-   * and wrap each character is a specific span tag
+   * and wrap each character in a specific span tag
    */
   const bindCodeCharacters = (): void => {
     let codemap: Code[] = []
@@ -34,7 +35,6 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
     // blocks into the codemap, keeping track of their positions
     // and elements
     contents.forEach((el, elIndex) => {
-      console.log('asdasd')
       if (isNonTypable(el)) {
         // Handle special case of end-of-line comment
         const prev = contents[elIndex - 1]
@@ -178,9 +178,13 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
     // Group remaining code chars by original element, and loop through
     // every element group and replace the element's text content with the
     // wrapped code chars
-    const groupedCodemap = codemap.map(piece => piece.elIndex)
+    // eslint-disable-next-line
+    const groupedCodemap = _.groupBy(codemap, function(piece) {
+      return piece.elIndex
+    })
 
-    groupedCodemap.forEach(codeGroup => {
+    // @ts-ignore
+    _.each(groupedCodemap, codeGroup => {
       const elem = codeGroup[0].el
       const elemText = elem.textContent || ''
 
@@ -226,7 +230,6 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
   React.useEffect(() => {
     bindCodeCharacters()
   }, [])
-  console.log(exercise)
   return (
     <Wrapper>
       <Container>

@@ -69,6 +69,7 @@ module.exports = {
     'react/no-danger': 0,
     'react/jsx-fragments': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/explicit-function-return-type': [
