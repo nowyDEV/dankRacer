@@ -70,8 +70,31 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       })
     })
 
-    const iterativeFilter = function(collection, state, loopFn): void {
-      // da
+    /**
+     * Reusable filter method that keeps track of indices
+     * marked for removal, with custom criteria functions
+     */
+    const iterativeFilter = (collection, state, loopFn): void => {
+      const indices = {}
+      const addSection = (lastIdx: number, curIdx: number): void => {
+        const start = lastIdx + 1
+        const howMany = curIdx - start
+
+        if (howMany > 0) {
+          for (let i = start; i < start + howMany; i++) {
+            indices[i] = true
+          }
+        }
+      }
+
+      collection.forEach((piece, index) => {
+        loopFn.call(state, piece, index, addSection)
+      })
+
+      // Remove the collected indices
+      return collection.filter((piece, index) => {
+        return !indices[index]
+      })
     }
 
     // Loop through contents of code, and add all non-comment
