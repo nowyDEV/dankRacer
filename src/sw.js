@@ -20,5 +20,5 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 workbox.routing.registerNavigationRoute(
   // Assuming '/index.html' has been precached,
   // look up its corresponding cache key.
-  workbox.precaching.getCacheKeyForURL('/index.html')
+  workbox.precaching.getCacheKeyForURL('index.html')
 )
