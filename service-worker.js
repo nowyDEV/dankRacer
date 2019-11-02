@@ -21,9 +21,9 @@ workbox.routing.registerRoute(new RegExp('https:.*api.*'), workbox.strategies.ne
 console.log('ehere4')
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
-console.log('ehere5')
+console.log('ehere55')
 
-console.log(workbox.precaching.getCacheKeyForURL('/index.html'))
+console.log(workbox.precaching.getCacheKeyForURL('index.html'))
 
 workbox.routing.registerNavigationRoute(
   // Assuming '/index.html' has been precached,
