@@ -7,6 +7,7 @@ workbox.setConfig({
 
 workbox.core.skipWaiting()
 workbox.core.clientsClaim()
+console.log('ehere2')
 
 workbox.routing.registerRoute(
   new RegExp('https:.*.(css|js)'),
@@ -14,10 +15,13 @@ workbox.routing.registerRoute(
     cacheName: 'cdn-cache'
   })
 ) // external assets
+console.log('ehere3')
 
 workbox.routing.registerRoute(new RegExp('https:.*api.*'), workbox.strategies.networkFirst()) // api JSON
+console.log('ehere4')
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
+console.log('ehere5')
 
 console.log(workbox.precaching.getCacheKeyForURL('/index.html'))
 
