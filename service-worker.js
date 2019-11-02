@@ -19,6 +19,8 @@ workbox.routing.registerRoute(new RegExp('https:.*api.*'), workbox.strategies.ne
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
+console.log(workbox.precaching.getCacheKeyForURL('/index.html'))
+
 workbox.routing.registerNavigationRoute(
   // Assuming '/index.html' has been precached,
   // look up its corresponding cache key.
