@@ -1,3 +1,5 @@
+import { prevAll } from './gameText.helpers'
+
 /**
  * Represents a player or opponent's cursor
  */
@@ -60,15 +62,15 @@ class CodeCursor {
     this.keystrokes += 1
     this.pos += 1
 
-    this.cursor.classList.remove(curClass)
+    this.cursor.classList.remove(...curClass.split(' '))
     if (this.isMainPlayer) {
       this.cursor.classList.remove('untyped')
       this.cursor.classList.add('typed')
     }
-    this.cursor.classList.add(trailingClass)
+    this.cursor.classList.add(...trailingClass.split(' '))
 
-    this.cursor = this.cursor.nextAll('.code-char').first()
-    this.cursor.classList.add(curClass)
+    this.cursor = this.cursor.nextElementSibling
+    this.cursor.classList.add(...curClass.split(' '))
 
     this.onAdvanceCursor.call(this, this)
   }
@@ -82,15 +84,15 @@ class CodeCursor {
     this.pos -= 1
     this.mistakePathLength -= 1
 
-    this.cursor.classList.remove(curClass)
-    this.cursor = this.cursor.prevAll('.code-char').first()
+    this.cursor.classList.remove(...curClass.split(' '))
+    ;[this.cursor] = prevAll(this.cursor)
 
-    this.cursor.classList.remove(trailingClass)
+    this.cursor.classList.remove(...trailingClass.split(' '))
     if (this.isMainPlayer) {
       this.cursor.classList.remove('typed')
       this.cursor.classList.add('untyped')
     }
-    this.cursor.classList.add(curClass)
+    this.cursor.classList.add(...curClass.split(' '))
 
     this.onRetreatCursor.call(this, this)
   }

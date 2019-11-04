@@ -106,6 +106,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
 
   React.useEffect((): (() => void) => {
     const handleBackspace = (e, key): void => {
+      console.log(key)
       e.preventDefault()
       state.playerCursor.backspaceKey()
     }

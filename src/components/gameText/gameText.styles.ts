@@ -23,4 +23,28 @@ export const Container = styled('code')`
   background: #f8f8ff;
   white-space: pre-wrap;
   border-radius: 4px;
+
+  .code-char {
+    &.untyped {
+      opacity: 0.7;
+    }
+
+    &.typed {
+      opacity: 1;
+    }
+
+    &.mistake {
+      background-color: #df2e1b;
+      color: #fff;
+    }
+
+    &.mistake-path {
+      color: #df2e1b;
+    }
+
+    &.player {
+      background-color: #1ac7a4;
+      color: #fff;
+    }
+  }
 `

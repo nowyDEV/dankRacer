@@ -17,3 +17,14 @@ export function hasClass(el: HTMLElement, classes: string[]): boolean {
 export function isTextNode(el: HTMLElement): boolean {
   return el.nodeType === 3
 }
+
+export function prevAll(element): HTMLElement[] {
+  let el = element.previousElementSibling
+  const result: HTMLElement[] = []
+
+  while (el instanceof HTMLElement) {
+    result.push(el)
+    el = el.previousElementSibling
+  }
+  return result
+}
