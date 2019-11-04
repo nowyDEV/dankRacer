@@ -2,6 +2,9 @@ import React from 'react'
 import { Wrapper, Container } from './gameText.styles'
 import UseBindCodeCharacters from './useBindCodeCharacters'
 import CodeCursor from './codeCursor'
+import { getKeyEvents } from './gameText.helpers'
+
+const Mousetrap = require('mousetrap')
 
 interface GameState {
   time: any
@@ -18,6 +21,11 @@ const gameReducer = (state, action): GameState => {
       return {
         ...state,
         startTime: action.payload
+      }
+    case 'SET_CURSOR':
+      return {
+        ...state,
+        playerCursor: action.payload
       }
     default:
       throw new Error('Wrong action provided to the gameReducer')
@@ -48,17 +56,32 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
     startGame()
 
     if (!state.playerCursor) {
-      state.playerCursor = new CodeCursor({
-        isMainPlayer: true,
-        playerId: '',
-        playerName: 'player',
-        cursor: '',
-        code: state.code,
-        onAdvanceCursor: '',
-        onRetreatCursor: '',
-        onGameComplete: ''
+      dispatch({
+        type: 'SET_CURSOR',
+        payload: new CodeCursor({
+          isMainPlayer: true,
+          playerId: '',
+          playerName: 'player',
+          cursor: '',
+          code: state.code,
+          onAdvanceCursor: '',
+          onRetreatCursor: '',
+          onGameComplete: ''
+        })
       })
     }
+
+    Mousetrap.bind(getKeyEvents(), (e, key) => {
+      e.preventDefault()
+      const newKey = ['space', 'shift+space'].includes(key) ? ' ' : ['enter', 'shift+enter'].includes(key) ? '\n' : key
+      state.playerCursor.processKey(newKey)
+    })
+
+    Mousetrap.bind(['backspace', 'shift+backspace'], (e, key) => {
+      console.log(key)
+      e.preventDefault()
+      state.playerCursor.backspaceKey()
+    })
   }, [])
 
   return (
