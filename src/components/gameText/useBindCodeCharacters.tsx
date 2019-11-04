@@ -231,8 +231,6 @@ function UseBindCodeCharacters(exerciseCode: string): any {
   const [htmlCode, setHtmlCode] = React.useState<string>(exerciseCode)
   const ref = React.useCallback(node => {
     if (node !== null) {
-      console.log(bindCodeCharacters(node))
-
       setHtmlCode(bindCodeCharacters(node) || '')
     }
   }, [])

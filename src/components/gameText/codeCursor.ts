@@ -39,10 +39,10 @@ class CodeCursor {
     this.onRetreatCursor = cfg.onRetreatCursor || (() => undefined)
     this.onGameComplete = cfg.onGameComplete || (() => undefined)
 
-    this.cursor.addClass(this.playerName)
+    this.cursor.classList.add(this.playerName)
   }
 
-  private processKey = (key): void => {
+  public processKey = (key): void => {
     if (this.isMistaken) {
       this.mistakePathKey()
     } else if (key === this.code.charAt(this.pos)) {
@@ -60,15 +60,15 @@ class CodeCursor {
     this.keystrokes += 1
     this.pos += 1
 
-    this.cursor.removeClass(curClass)
+    this.cursor.classList.remove(curClass)
     if (this.isMainPlayer) {
-      this.cursor.removeClass('untyped')
-      this.cursor.addClass('typed')
+      this.cursor.classList.remove('untyped')
+      this.cursor.classList.add('typed')
     }
-    this.cursor.addClass(trailingClass)
+    this.cursor.classList.add(trailingClass)
 
     this.cursor = this.cursor.nextAll('.code-char').first()
-    this.cursor.addClass(curClass)
+    this.cursor.classList.add(curClass)
 
     this.onAdvanceCursor.call(this, this)
   }
@@ -82,15 +82,15 @@ class CodeCursor {
     this.pos -= 1
     this.mistakePathLength -= 1
 
-    this.cursor.removeClass(curClass)
+    this.cursor.classList.remove(curClass)
     this.cursor = this.cursor.prevAll('.code-char').first()
 
-    this.cursor.removeClass(trailingClass)
+    this.cursor.classList.remove(trailingClass)
     if (this.isMainPlayer) {
-      this.cursor.removeClass('typed')
-      this.cursor.addClass('untyped')
+      this.cursor.classList.remove('typed')
+      this.cursor.classList.add('untyped')
     }
-    this.cursor.addClass(curClass)
+    this.cursor.classList.add(curClass)
 
     this.onRetreatCursor.call(this, this)
   }
@@ -116,7 +116,7 @@ class CodeCursor {
     }
     // But we do want to highlight a mistake, even if we're at the end
     // of the code
-    this.cursor.addClass('mistaken')
+    this.cursor.classList.add('mistaken')
   }
 
   private mistakePathKey = (): void => {
@@ -128,19 +128,19 @@ class CodeCursor {
     }
   }
 
-  private backspaceKey = (): void => {
+  public backspaceKey = (): void => {
     if (this.isMistaken) {
       this.retreatCursorWithClass(`${this.playerName} mistaken`, 'mistake-path mistake')
 
       if (this.mistakePathLength === 0) {
         this.isMistaken = false
-        this.cursor.removeClass('mistaken')
+        this.cursor.classList.remove('mistaken')
       }
     }
   }
 
   public destroy = (): void => {
-    this.cursor.removeClass(this.playerName)
+    this.cursor.classList.remove(this.playerName)
   }
 }
 

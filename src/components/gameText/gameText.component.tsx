@@ -53,36 +53,78 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       dispatch({ type: 'START_GAME', payload: new Date() })
       setStarted(true)
     }
-    startGame()
 
-    if (!state.playerCursor) {
-      dispatch({
-        type: 'SET_CURSOR',
-        payload: new CodeCursor({
-          isMainPlayer: true,
-          playerId: '',
-          playerName: 'player',
-          cursor: '',
-          code: state.code,
-          onAdvanceCursor: '',
-          onRetreatCursor: '',
-          onGameComplete: ''
-        })
-      })
+    const scrollToCursor = (cursor): void => {
+      // Make sure the cursor DOM element exists
+      if (cursor.cursor.length) {
+        const windowHeight = window.innerHeight
+        const cursorPos = cursor.cursor.getBoundingClientRect().top + document.body.scrollTop
+        const windowPos = window.pageYOffset + windowHeight
+
+        // Begin scrolling when 25% from the bottom
+        if (windowPos - cursorPos < windowHeight * 0.25) {
+          window.scrollTo(0, cursorPos - windowHeight * 0.25)
+        }
+      }
     }
 
-    Mousetrap.bind(getKeyEvents(), (e, key) => {
+    // TODO
+    const updatePlayerProgress = (cursor): void => {
+      console.log(cursor)
+    }
+
+    const onPlayerAdvanceCursor = (cursor): void => {
+      scrollToCursor(cursor)
+      updatePlayerProgress(cursor)
+    }
+
+    const completeGame = (cursor): void => {
+      console.log('emit ingame:complete', cursor)
+    }
+
+    if (!state.playerCursor) {
+      const el = document.querySelector('.code-char')
+      if (el instanceof HTMLElement) {
+        dispatch({
+          type: 'SET_CURSOR',
+          payload: new CodeCursor({
+            isMainPlayer: true,
+            playerId: '666',
+            playerName: 'player',
+            cursor: el,
+            code: exercise.code,
+            onAdvanceCursor: onPlayerAdvanceCursor,
+            onRetreatCursor: null,
+            onGameComplete: completeGame
+          })
+        })
+      }
+    }
+
+    startGame()
+  }, [htmlData])
+
+  React.useEffect((): (() => void) => {
+    const handleBackspace = (e, key): void => {
+      e.preventDefault()
+      state.playerCursor.backspaceKey()
+    }
+
+    const handleKeyPress = (e, key): void => {
       e.preventDefault()
       const newKey = ['space', 'shift+space'].includes(key) ? ' ' : ['enter', 'shift+enter'].includes(key) ? '\n' : key
       state.playerCursor.processKey(newKey)
-    })
+    }
 
-    Mousetrap.bind(['backspace', 'shift+backspace'], (e, key) => {
-      console.log(key)
-      e.preventDefault()
-      state.playerCursor.backspaceKey()
-    })
-  }, [])
+    Mousetrap.bind(getKeyEvents(), handleKeyPress)
+    Mousetrap.bind(['backspace', 'shift+backspace'], handleBackspace)
+    return (): void => {
+      Mousetrap.unbind(getKeyEvents(), handleKeyPress)
+      Mousetrap.unbind(['backspace', 'shift+backspace'], handleBackspace)
+    }
+  }, [state.playerCursor])
+
+  console.log('state: ', state)
 
   return (
     <Wrapper>
