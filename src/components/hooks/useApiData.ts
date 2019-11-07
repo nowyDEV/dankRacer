@@ -1,5 +1,6 @@
 import React from 'react'
 import agent from '../../api/agent'
+import { getRandomItemFromArray } from '../../shared/index'
 
 interface State {
   isLoading: boolean
@@ -31,8 +32,8 @@ function UseDataApi(): [State] {
     const fetchData = async (): Promise<void> => {
       dispatch({ type: 'FETCH_INIT' })
       try {
-        const result = await agent.requests.getData()
-        dispatch({ type: 'FETCH_SUCCESS', payload: result })
+        const result = await agent.requests.getGameData()
+        dispatch({ type: 'FETCH_SUCCESS', payload: getRandomItemFromArray(result) })
       } catch (error) {
         dispatch({ type: 'FETCH_FAILURE' })
       }

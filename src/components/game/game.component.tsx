@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Wrapper, Status } from './game.styles'
-import { TypingPanel } from '../typingPanel'
 import { CameraView } from '../cameraView'
 import { GameText } from '../gameText'
 
@@ -28,20 +27,14 @@ const appReducer = (state, action): State => {
   }
 }
 
-function Game({ text }: { text: string }): JSX.Element {
+function Game({ data }: { data: GameInstance }): JSX.Element {
   const [state, dispatch] = React.useReducer(appReducer, {
     startTime: null,
     wpm: 0,
     progress: 0
   })
 
-  const onType = (): void => {
-    if (state.startTime == null) {
-      dispatch({ type: 'START_GAME', payload: Date.now() })
-    }
-  }
-
-  const onProgress = (current, total): void => {
+  const handleProgress = (current, total): void => {
     dispatch({
       type: 'MAKE_PROGRESS',
       payload: {
@@ -54,8 +47,11 @@ function Game({ text }: { text: string }): JSX.Element {
   return (
     <Wrapper>
       <Container>
-        <GameText />
-        <TypingPanel text={text} onProgress={onProgress} onType={onType} />
+        <GameText
+          onStart={(): void => dispatch({ type: 'START_GAME', payload: Date.now() })}
+          exercise={data!.exercise}
+          onProgress={handleProgress}
+        />
         <Status>
           {`${(state.progress * 100).toFixed(0)}% completed ${state.wpm ? `, ${state.wpm.toFixed(0)} WPM` : ''}`}
         </Status>

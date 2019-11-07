@@ -1,1 +1,1 @@
-export { default as GameText } from './gameText.container'
+export { default as GameText } from './gameText.component'

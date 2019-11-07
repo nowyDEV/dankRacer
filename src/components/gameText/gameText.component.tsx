@@ -34,10 +34,12 @@ const gameReducer = (state, action): GameState => {
 
 function GameText({
   exercise,
-  onProgress
+  onProgress,
+  onStart
 }: {
   exercise: Exercise
-  onProgress: (progress: number) => void
+  onProgress: (current: number, total: number) => void
+  onStart: () => void
 }): JSX.Element {
   const [htmlData, gameCode] = UseBindCodeCharacters(exercise.code)
   const [state, dispatch] = React.useReducer(gameReducer, {
@@ -76,7 +78,7 @@ function GameText({
 
     // TODO
     const updatePlayerProgress = (cursor): void => {
-      onProgress(((cursor.pos / cursor.codeLength) * 100) | 0)
+      onProgress(cursor.pos, cursor.codeLength)
     }
 
     const onPlayerAdvanceCursor = (cursor): void => {
@@ -114,6 +116,7 @@ function GameText({
       })
 
     startGame()
+    onStart()
   }, [htmlData])
 
   React.useEffect((): (() => void) => {

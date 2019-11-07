@@ -13,7 +13,8 @@ export const Wrapper = styled('div')`
 
 export const Container = styled('div')`
   width: 960px;
-  height: 650px;
+  height: calc(100vh - 100px);
+  max-height: 900px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   position: relative;
