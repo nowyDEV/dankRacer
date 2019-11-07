@@ -24,6 +24,10 @@ export const Container = styled('code')`
   white-space: pre-wrap;
   border-radius: 4px;
 
+  .comment {
+    opacity: 0.7;
+  }
+
   .code-char {
     &.untyped {
       opacity: 0.7;
@@ -42,9 +46,41 @@ export const Container = styled('code')`
       color: #df2e1b;
     }
 
+    &.player.mistaken {
+      background-color: #7f9293;
+      color: #fff;
+    }
+
     &.player {
       background-color: #1ac7a4;
       color: #fff;
+    }
+
+    &.opponent {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    &.return-char {
+      text-align: center;
+      display: inline-block;
+      width: 20px;
+      visibility: hidden;
+
+      &.mistake,
+      &.mistaken-path,
+      &.opponent,
+      &.player {
+        visibility: visible;
+      }
+
+      &::before {
+        content: '\\23CE';
+      }
+
+      &.backspace-char::before {
+        content: '\\232B';
+      }
     }
   }
 `

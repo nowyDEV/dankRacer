@@ -1,5 +1,12 @@
 import { prevAll } from './gameText.helpers'
 
+function addClasses(el: HTMLElement, classes: string): void {
+  const classArray = classes.split(' ').filter(singleClass => singleClass.length > 0)
+  if (classArray.length > 0) {
+    el.classList.add(...classArray)
+  }
+}
+
 /**
  * Represents a player or opponent's cursor
  */
@@ -25,7 +32,7 @@ class CodeCursor {
     this.playerId = cfg.playerId
     this.playerName = cfg.playerName
     this.cursor = cfg.cursor
-    this.code = cfg.code
+    this.code = cfg.code.trim()
     this.codeLength = cfg.code.length
     this.pos = 0
     this.keystrokes = 0
@@ -67,7 +74,8 @@ class CodeCursor {
       this.cursor.classList.remove('untyped')
       this.cursor.classList.add('typed')
     }
-    this.cursor.classList.add(...trailingClass.split(' '))
+    addClasses(this.cursor, trailingClass)
+    // this.cursor.classList.add(...trailingClass.split(' '))
 
     this.cursor = this.cursor.nextElementSibling
     this.cursor.classList.add(...curClass.split(' '))

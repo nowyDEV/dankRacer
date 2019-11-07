@@ -21,7 +21,11 @@ function GameTextContainer(): JSX.Element {
     fetchData()
   }, [])
 
-  return isLoading ? <span>Loading...</span> : <GameText exercise={data!.exercise} />
+  const handleProgress = (progress): void => {
+    console.log(progress)
+  }
+
+  return isLoading ? <span>Loading...</span> : <GameText exercise={data!.exercise} onProgress={handleProgress} />
 }
 
 export default GameTextContainer

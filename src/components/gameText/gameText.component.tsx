@@ -32,7 +32,13 @@ const gameReducer = (state, action): GameState => {
   }
 }
 
-function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
+function GameText({
+  exercise,
+  onProgress
+}: {
+  exercise: Exercise
+  onProgress: (progress: number) => void
+}): JSX.Element {
   const [htmlData, gameCode] = UseBindCodeCharacters(exercise.code)
   const [state, dispatch] = React.useReducer(gameReducer, {
     time: null,
@@ -70,7 +76,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
 
     // TODO
     const updatePlayerProgress = (cursor): void => {
-      console.log(cursor)
+      onProgress(((cursor.pos / cursor.codeLength) * 100) | 0)
     }
 
     const onPlayerAdvanceCursor = (cursor): void => {
@@ -92,7 +98,7 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
             playerId: '666',
             playerName: 'player',
             cursor: el,
-            code: exercise.code,
+            code: exercise.typeableCode,
             onAdvanceCursor: onPlayerAdvanceCursor,
             onRetreatCursor: null,
             onGameComplete: completeGame
@@ -101,12 +107,17 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       }
     }
 
+    const wrapper = document.getElementById('gamecode')
+    wrapper instanceof HTMLElement &&
+      wrapper.querySelectorAll('.code-char').forEach(el => {
+        el.classList.add('untyped')
+      })
+
     startGame()
   }, [htmlData])
 
   React.useEffect((): (() => void) => {
     const handleBackspace = (e, key): void => {
-      console.log(key)
       e.preventDefault()
       state.playerCursor.backspaceKey()
     }
@@ -124,8 +135,6 @@ function GameText({ exercise }: { exercise: Exercise }): JSX.Element {
       Mousetrap.unbind(['backspace', 'shift+backspace'], handleBackspace)
     }
   }, [state.playerCursor])
-
-  console.log('state: ', state)
 
   return (
     <Wrapper>
