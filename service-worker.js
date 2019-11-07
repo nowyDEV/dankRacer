@@ -1,4 +1,4 @@
-importScripts("/dankRacer/precache-manifest.54c41f08885b48b9380ff3fd2d525717.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/dankRacer/precache-manifest.af975d235e1414a9d3090f54a993dfe0.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /* eslint-disable */
 workbox.setConfig({
