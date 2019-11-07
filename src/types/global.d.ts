@@ -1,10 +1,3 @@
-type ApiData = Text[]
-
-interface Text {
-  id: number
-  text: string
-}
-
 interface GameInstance {
   success: boolean
   game: Game

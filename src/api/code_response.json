@@ -68,5 +68,110 @@
       "projectName": "d3.js"
     },
     "nonTypeables": ".comment,.template_comment,.diff,.javadoc,.phpdoc"
+  },
+  {
+    "success": true,
+    "game": {
+      "isSinglePlayer": true,
+      "numPlayers": 1,
+      "maxPlayers": 1,
+      "isJoinable": false,
+      "isComplete": false,
+      "isViewable": false,
+      "starting": true,
+      "started": false,
+      "players": ["5dc42527d9de4b001447318b"],
+      "playerNames": ["player7132"],
+      "startingPlayers": [],
+      "wasReset": false,
+      "_id": "5dc42590d9de4b001447318d",
+      "lang": "javascript",
+      "langName": "JavaScript",
+      "exercise": "5286d19434a63f1c76000013",
+      "creator": "5dc42527d9de4b001447318b",
+      "status": "waiting",
+      "statusText": "Waiting",
+      "startTime": "2019-11-07T14:09:25.833Z",
+      "__v": 0
+    },
+    "timeLeft": -4986,
+    "exercise": {
+      "_id": "5286d19434a63f1c76000013",
+      "typeables": 456,
+      "typeableCode": "jQuery.extend({\ndir: function( elem, dir, until ) {\nvar matched = [],\ntruncate = until !== undefined;\nwhile ( (elem = elem[ dir ]) && elem.nodeType !== 9 ) {\nif ( elem.nodeType === 1 ) {\nif ( truncate && jQuery( elem ).is( until ) ) {\nbreak;\n}\nmatched.push( elem );\n}\n}\nreturn matched;\n},\nsibling: function( n, elem ) {\nvar matched = [];\nfor ( ; n; n = n.nextSibling ) {\nif ( n.nodeType === 1 && n !== elem ) {\nmatched.push( n );\n}\n}\nreturn matched;\n}\n});\n",
+      "code": "jQuery.extend({\n        dir: function( elem, dir, until ) {\n                var matched = [],\n                        truncate = until !== undefined;\n\n                while ( (elem = elem[ dir ]) && elem.nodeType !== 9 ) {\n                        if ( elem.nodeType === 1 ) {\n                                if ( truncate && jQuery( elem ).is( until ) ) {\n                                        break;\n                                }\n                                matched.push( elem );\n                        }\n                }\n                return matched;\n        },\n\n        sibling: function( n, elem ) {\n                var matched = [];\n\n                for ( ; n; n = n.nextSibling ) {\n                        if ( n.nodeType === 1 && n !== elem ) {\n                                matched.push( n );\n                        }\n                }\n\n                return matched;\n        }\n});\n",
+      "projectName": "jQuery"
+    },
+    "nonTypeables": ".comment,.template_comment,.diff,.javadoc,.phpdoc"
+  },
+  {
+    "success": true,
+    "game": {
+      "isSinglePlayer": true,
+      "numPlayers": 1,
+      "maxPlayers": 1,
+      "isJoinable": false,
+      "isComplete": false,
+      "isViewable": false,
+      "starting": true,
+      "started": false,
+      "players": ["5dc432e9b5daad0014edc613"],
+      "playerNames": ["player6813"],
+      "startingPlayers": [],
+      "wasReset": false,
+      "_id": "5dc432f0b5daad0014edc614",
+      "lang": "javascript",
+      "langName": "JavaScript",
+      "exercise": "5286d19434a63f1c7600001c",
+      "creator": "5dc432e9b5daad0014edc613",
+      "status": "waiting",
+      "statusText": "Waiting",
+      "startTime": "2019-11-07T15:06:29.040Z",
+      "__v": 0
+    },
+    "timeLeft": -4946,
+    "exercise": {
+      "_id": "5286d19434a63f1c7600001c",
+      "typeables": 338,
+      "typeableCode": "fs.exists = function(path, callback) {\nif (!nullCheck(path, cb)) return;\nbinding.stat(pathModule._makeLong(path), cb);\nfunction cb(err, stats) {\nif (callback) callback(err ? false : true);\n}\n};\nfs.existsSync = function(path) {\ntry {\nnullCheck(path);\nbinding.stat(pathModule._makeLong(path));\nreturn true;\n} catch (e) {\nreturn false;\n}\n};\n",
+      "code": "fs.exists = function(path, callback) {\n  if (!nullCheck(path, cb)) return;\n  binding.stat(pathModule._makeLong(path), cb);\n  function cb(err, stats) {\n    if (callback) callback(err ? false : true);\n  }\n};\n\nfs.existsSync = function(path) {\n  try {\n    nullCheck(path);\n    binding.stat(pathModule._makeLong(path));\n    return true;\n  } catch (e) {\n    return false;\n  }\n};\n",
+      "projectName": "Node.js"
+    },
+    "nonTypeables": ".comment,.template_comment,.diff,.javadoc,.phpdoc"
+  },
+  {
+    "success": true,
+    "game": {
+      "isSinglePlayer": true,
+      "numPlayers": 1,
+      "maxPlayers": 1,
+      "isJoinable": false,
+      "isComplete": false,
+      "isViewable": false,
+      "starting": true,
+      "started": false,
+      "players": ["5dc432e9b5daad0014edc613"],
+      "playerNames": ["player6813"],
+      "startingPlayers": [],
+      "wasReset": false,
+      "_id": "5dc43317b5daad0014edc615",
+      "lang": "javascript",
+      "langName": "JavaScript",
+      "exercise": "5286d19434a63f1c7600000a",
+      "creator": "5dc432e9b5daad0014edc613",
+      "status": "waiting",
+      "statusText": "Waiting",
+      "startTime": "2019-11-07T15:07:08.877Z",
+      "__v": 0
+    },
+    "timeLeft": -4977,
+    "exercise": {
+      "_id": "5286d19434a63f1c7600000a",
+      "typeables": 339,
+      "typeableCode": "function pubSub(){\nvar singles = {},\nnewListener = newSingle('newListener'),\nremoveListener = newSingle('removeListener');\nfunction newSingle(eventName) {\nreturn singles[eventName] = singleEventPubSub(\neventName,\nnewListener,\nremoveListener\n);\n}\nfunction pubSubInstance( eventName ){\nreturn singles[eventName] || newSingle( eventName );\n}\n",
+      "code": "function pubSub(){\n\n   var singles = {},\n       newListener = newSingle('newListener'),\n       removeListener = newSingle('removeListener'); \n      \n   function newSingle(eventName) {\n      return singles[eventName] = singleEventPubSub(\n         eventName, \n         newListener, \n         removeListener\n      );   \n   }      \n\n   /** pubSub instances are functions */\n   function pubSubInstance( eventName ){   \n      \n      return singles[eventName] || newSingle( eventName );   \n   }\n",
+      "projectName": "oboe.js"
+    },
+    "nonTypeables": ".comment,.template_comment,.diff,.javadoc,.phpdoc"
   }
 ]
